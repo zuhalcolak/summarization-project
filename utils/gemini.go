@@ -80,9 +80,11 @@ func (c *GeminiClient) GenerateText(systemInstruction, userPrompt string) (strin
 			Parts: []part{{Text: systemInstruction}},
 		},
 		Contents: []content{
-			{Role: "user", Parts: []part{{Text: "userPrompt"}}},
+			{Role: "user", Parts: []part{{Text: userPrompt}}},
 		},
-		Tools: []map[string]any{{"googleSearch": map[string]any{}}},
+		GenerationConfig: map[string]any{
+			"response_mime_type": "application/json",
+		},
 	}
 
 	buf, _ := json.Marshal(body)
