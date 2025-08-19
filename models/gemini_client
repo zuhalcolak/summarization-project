@@ -1,9 +1,0 @@
-package models
-
-import "net/http"
-
-type GeminiClient struct {
-	APIKey string
-	Model  string
-	Http   *http.Client
-}
